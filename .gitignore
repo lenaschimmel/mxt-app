@@ -38,3 +38,6 @@ Makefile.in
 doc/html
 doc/doxygen_sqlite3.db
 /tags
+/csv
+*.xcfg
+settings.json
