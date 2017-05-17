@@ -448,6 +448,7 @@ int mxt_debug_dump_initialise(struct t37_ctx *ctx)
   case DELTAS_MODE:
   case REFS_MODE:
     ctx->self_cap = false;
+    ctx->active_stylus = false;
 
     if (id->family == 0xA0 && id->variant == 0x00) {
       /* mXT1386 data is formatted into stripes */
@@ -473,6 +474,7 @@ int mxt_debug_dump_initialise(struct t37_ctx *ctx)
   case SELF_CAP_DELTAS:
   case SELF_CAP_REFS:
     ctx->self_cap = true;
+    ctx->active_stylus = false;
 
     if (id->family != 164) {
       mxt_err(ctx->lc, "Self cap data not available");
@@ -576,6 +578,8 @@ int mxt_read_diagnostic_data_frame(struct t37_ctx* ctx)
       mxt_debug_insert_data(ctx);
     }
   }
+
+
 
   return MXT_SUCCESS;
 }
